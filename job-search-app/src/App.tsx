@@ -1,11 +1,11 @@
-import './App.css';
+import { Button } from '@mantine/core'
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      summer
+      <Button>Click me!</Button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
