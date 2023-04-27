@@ -17,6 +17,11 @@
   text-transform: capitalize;
 }
 
+.subtitle {
+  font: var(--font-text-4);
+  text-transform: capitalize;
+}
+
 .resetFilters {
   color: var(--grey500-color);
   font: var(--font-text-5);
@@ -26,4 +31,10 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.salary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }

@@ -1,11 +1,11 @@
-import { Select } from '@mantine/core'
 import { FC, useState } from 'react'
 import { IconChevronDown } from '@tabler/icons-react'
+import { Select } from '@mantine/core'
 
 import styles from './Input.module.scss'
 
 interface InputProps {
-  label: string
+  label?: string
   placeholder: string
 }
 
@@ -14,7 +14,7 @@ const Input: FC<InputProps> = ({ label, placeholder }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}>{label}</div>
+      {label && <div className={styles.title}>{label}</div>}
       <Select
         className={styles.input}
         value={value}
