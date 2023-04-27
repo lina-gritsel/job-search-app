@@ -1,12 +1,15 @@
 import { FC } from 'react'
-import { MENU_ITEMS } from './constants'
 import { NavLink } from 'react-router-dom'
+
+import { MENU_ITEMS } from './constants'
+
+import styles from './Menu.module.scss'
 
 const Menu: FC = () => {
   return (
-    <div>
+    <div className={styles.container}>
       {MENU_ITEMS.map(({ to, label }, index) => (
-        <NavLink key={index} to={to}>
+        <NavLink className={styles.menuItem} key={index} to={to}>
           {label}
         </NavLink>
       ))}
