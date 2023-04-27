@@ -7,9 +7,11 @@ import './index.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <React.StrictMode>
-    <MantineProvider withGlobalStyles withNormalizeCSS>
-      <App />
-    </MantineProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+    <React.Suspense fallback="loading">
+      <MantineProvider withGlobalStyles withNormalizeCSS>
+        <App />
+      </MantineProvider>
+    </React.Suspense>
+  /* </React.StrictMode>, */
 )

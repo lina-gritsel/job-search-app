@@ -1,9 +1,11 @@
-import { Button } from '@mantine/core'
+import { FC } from 'react'
 
-const App = () => {
+import Router from './router'
+
+const App: FC = () => {
   return (
     <div className="App">
-      <Button>Click me!</Button>
+      <Router />
     </div>
   )
 }
