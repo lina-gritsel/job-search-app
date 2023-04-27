@@ -1,19 +1,15 @@
-import { FC, ReactNode } from 'react'
+import { FC, PropsWithChildren } from 'react'
 
-import Menu from '../Menu'
+import Header from '../Header'
 
 import styles from './Layout.module.scss'
 
-interface LayoutProps {
-  children: ReactNode
-}
-
-const Layout: FC<LayoutProps> = ({ children }) => {
+const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <>
-      <Menu />
-      {children}
-    </>
+    <div className={styles.container}>
+      <Header />
+      <div className={styles.content}>{children}</div>
+    </div>
   )
 }
 

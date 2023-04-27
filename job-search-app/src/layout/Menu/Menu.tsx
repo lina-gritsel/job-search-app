@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { MENU_ITEMS } from './constants'
 
 import styles from './Menu.module.scss'
+import Logo from '../../assets/icons/Logo'
 
 const Menu: FC = () => {
   return (
