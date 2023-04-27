@@ -1,0 +1,59 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.container {
+  background-color: var(--white-color);
+  border-radius: 12px;
+  border: 1px solid var(--grey200-color);
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 24px;
+  position: relative;
+  width: 773px;
+}
+
+.work {
+  color: var(--blue-main-color);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.salary {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.timeLine {
+  line-height: 20px;
+}
+
+.location {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.locationIcon {
+  width: 20px;
+}
+
+.sity {
+  line-height: 19px;
+}
+
+.favorite {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}
