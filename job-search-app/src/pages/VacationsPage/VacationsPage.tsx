@@ -1,6 +1,6 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
-import Filters from '../../components/Filters/Filters'
+import Filters from './components/Filters/Filters'
 
 import styles from './VacationsPage.module.scss'
 import VacationsList from './components/VacationsList'

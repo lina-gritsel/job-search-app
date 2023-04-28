@@ -7,9 +7,10 @@ import styles from './Input.module.scss'
 interface InputProps {
   label?: string
   placeholder: string
+  data: string[]
 }
 
-const Input: FC<InputProps> = ({ label, placeholder }) => {
+const Input: FC<InputProps> = ({ label, placeholder, data }) => {
   const [value, setValue] = useState<string | null>(null)
 
   return (
@@ -27,7 +28,7 @@ const Input: FC<InputProps> = ({ label, placeholder }) => {
         rightSection={<IconChevronDown className={styles.iconArrow} />}
         rightSectionWidth={30}
         styles={{ rightSection: { pointerEvents: 'none' } }}
-        data={['React', 'Angular', 'Svelte', 'Vue']}
+        data={data}
       />
     </div>
   )

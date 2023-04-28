@@ -1,11 +1,16 @@
 import { FC } from 'react'
-import Input from '../Input'
-
-import styles from './Filters.module.scss'
-import InputNumeric from '../InputNumeric'
 import { Button } from '@mantine/core'
 
+import InputNumeric from '../../../../components/InputNumeric'
+import Input from '../../../../components/Input'
+
+import { useVacationsPage } from '../../hooks/useVacationsPage'
+
+import styles from './Filters.module.scss'
+
 const Filters: FC = () => {
+  const { industrys } = useVacationsPage()
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -13,7 +18,7 @@ const Filters: FC = () => {
         <div className={styles.resetFilters}>Cбросить все</div>
       </div>
       <div className={styles.content}>
-        <Input label="Отрасль" placeholder="Выберете отрасль" />
+        <Input label="Отрасль" placeholder="Выберете отрасль" data={industrys} />
         <div className={styles.salary}>
           <div className={styles.subtitle}>оклад</div>
           <InputNumeric placeholder="От" />
