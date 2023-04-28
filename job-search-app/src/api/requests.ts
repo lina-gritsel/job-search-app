@@ -19,3 +19,20 @@ export const getIndustrys = async () => {
     console.log((error as Error).message)
   }
 }
+
+export const getVacancies = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/vacancies/`, {
+      headers: {
+        'x-secret-key': 'GEU4nvd3rej*jeh.eqp',
+        "X-Api-App-Id": "v3.r.137440105.ffdbab114f92b821eac4e21f485343924a773131.06c3bdbb8446aeb91c35b80c42ff69eb9c457948",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
+    const data = response.data.objects
+    console.log(data)
+    return data
+  } catch (error) {
+    console.log((error as Error).message)
+  }
+}
