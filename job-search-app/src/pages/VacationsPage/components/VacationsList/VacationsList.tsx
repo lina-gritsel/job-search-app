@@ -9,7 +9,12 @@ import { parseVacanciesData } from '../../helpers'
 
 import styles from './VacationsList.module.scss'
 
-const VacationsList: FC<{ vacancies: Vacation[] }> = ({ vacancies }) => {
+interface VacationsListProps {
+  vacancies: Vacation[]
+  loading: boolean
+}
+
+const VacationsList: FC<VacationsListProps> = ({ vacancies, loading }) => {
   const parsedVacations = parseVacanciesData(vacancies)
 
   return (

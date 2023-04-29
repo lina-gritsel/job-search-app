@@ -1,22 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
 import { fetchIndustries, fetchAllVacancies } from '../../../api/requests'
-import { Vacation } from '../../../api/types'
 
-export const useVacationsPage = () => {
-  const [industries, setIndustries] = useState<string[]>([])
-  const [vacancies, setVacancies] = useState<Vacation[]>([])
+export const useFetchAllVacations = () => {
+  const {
+    data,
+    isLoading,
+    isFetching,
+  }: {
+    data: any
+    isLoading: boolean
+    isFetching: boolean
+  } = useQuery(['fetchAllVacations'], () => fetchAllVacancies(), {
+    refetchOnWindowFocus: false,
+    staleTime: 60_000,
+  })
 
-  useEffect(() => {
-    const fetchDataForVacationsPage = async () => {
-      const allIndustries = await fetchIndustries()
-      const allVacancies = await fetchAllVacancies()
+  return { data: data || [], loading: isLoading || isFetching }
+}
 
-      setIndustries(allIndustries)
-      setVacancies(allVacancies)
-    }
-    fetchDataForVacationsPage()
-  }, [])
+export const useFetchAllIndustries = () => {
+  const { data } = useQuery(['fetchAllIndustries'], () => fetchIndustries(), {
+    refetchOnWindowFocus: false,
+    staleTime: 60_000,
+  })
 
-  return { industries, vacancies }
+  return { data: data || [] }
 }

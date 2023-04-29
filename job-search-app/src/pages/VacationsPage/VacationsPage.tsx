@@ -2,17 +2,18 @@ import { FC } from 'react'
 
 import VacationsList from './components/VacationsList'
 import Filters from './components/Filters/Filters'
-import { useVacationsPage } from './hooks'
+import { useFetchAllIndustries, useFetchAllVacations } from './hooks'
 
 import styles from './VacationsPage.module.scss'
 
 const VacationsPage: FC = () => {
-  const { industries, vacancies } = useVacationsPage()
+  const { data: vacancies, loading } = useFetchAllVacations()
+  const { data: industries } = useFetchAllIndustries()
 
   return (
     <div className={styles.container}>
       <Filters industries={industries} />
-      <VacationsList vacancies={vacancies} />
+      <VacationsList vacancies={vacancies} loading={loading} />
     </div>
   )
 }
