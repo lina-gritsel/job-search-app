@@ -1,0 +1,1 @@
+export { useVacationsPage } from './useVacationsPage'

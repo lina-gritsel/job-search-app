@@ -5,17 +5,14 @@ import { Select } from '@mantine/core'
 import styles from './Input.module.scss'
 
 interface InputProps {
-  label?: string
   placeholder: string
   data: string[]
 }
 
-const Input: FC<InputProps> = ({ label, placeholder, data }) => {
-  const [value, setValue] = useState<string | null>(null)
+const Input: FC<InputProps> = ({ placeholder, data }) => {
+  const [value, setValue] = useState<string | null>("")
 
   return (
-    <div className={styles.container}>
-      {label && <div className={styles.title}>{label}</div>}
       <Select
         className={styles.input}
         value={value}
@@ -30,7 +27,6 @@ const Input: FC<InputProps> = ({ label, placeholder, data }) => {
         styles={{ rightSection: { pointerEvents: 'none' } }}
         data={data}
       />
-    </div>
   )
 }
 

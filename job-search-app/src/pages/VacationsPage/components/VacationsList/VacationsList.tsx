@@ -1,28 +1,29 @@
 import { FC } from 'react'
-import { MOCK_DATA } from '../../../../mockData'
+
 import Location from '../../../../assets/icons/Location'
 import Star from '../../../../assets/icons/Star'
+import { MOCK_DATA } from '../../../../mockData'
+import { Vacation } from '../../../../api'
 
-import { useVacationsPage } from '../../hooks/useVacationsPage'
+import { parseVacanciesData } from '../../helpers'
 
 import styles from './VacationsList.module.scss'
 
-const VacationsList: FC = () => {
-  const { vacancies } = useVacationsPage()
-  console.log(vacancies)
+const VacationsList: FC<{ vacancies: Vacation[] }> = ({ vacancies }) => {
+  const parsedVacations = parseVacanciesData(vacancies)
 
   return (
     <div className={styles.list}>
-      {vacancies.map(({ profession, payment_from, type_of_work,town }, index) => (
+      {parsedVacations.map(({ profession, salary, position, city }, index) => (
         <div key={index} className={styles.container}>
-          <div className={styles.work}>{profession}</div>
+          <p className={styles.work}>{profession}</p>
           <div className={styles.wrapper}>
-            <div className={styles.salary}>з/п от {payment_from} rub</div>
-            <div className={styles.timeLine}>{type_of_work.title}</div>
+            <p className={styles.salary}>з/п от {salary} rub</p>
+            <p className={styles.timeLine}>{position}</p>
           </div>
           <div className={styles.location}>
             <Location className={styles.locationIcon} />
-            <div className={styles.sity}>{town.title}</div>
+            <p className={styles.city}>{city}</p>
           </div>
           <Star className={styles.favorite} />
         </div>
