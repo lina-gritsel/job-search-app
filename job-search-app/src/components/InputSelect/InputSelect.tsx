@@ -2,14 +2,14 @@ import { FC, useState } from 'react'
 import { IconChevronDown } from '@tabler/icons-react'
 import { Select } from '@mantine/core'
 
-import styles from './Input.module.scss'
+import styles from './InputSelect.module.scss'
 
-interface InputProps {
+interface InputSelectProps {
   placeholder: string
   data: string[]
 }
 
-const Input: FC<InputProps> = ({ placeholder, data }) => {
+const InputSelect: FC<InputSelectProps> = ({ placeholder, data }) => {
   const [value, setValue] = useState<string | null>("")
 
   return (
@@ -30,4 +30,4 @@ const Input: FC<InputProps> = ({ placeholder, data }) => {
   )
 }
 
-export default Input
+export default InputSelect

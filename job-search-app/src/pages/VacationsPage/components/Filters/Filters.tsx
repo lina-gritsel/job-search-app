@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Button } from '@mantine/core'
 
 import InputNumeric from '../../../../components/InputNumeric'
-import Input from '../../../../components/Input'
+import InputSelect from '../../../../components/InputSelect'
 
 import styles from './Filters.module.scss'
 
@@ -16,7 +16,7 @@ const Filters: FC<{ industries: string[] }> = ({ industries }) => {
       <div className={styles.content}>
         <div className={styles.filter}>
           <p className={styles.subtitle}>отрасль</p>
-          <Input placeholder="Выберите отрасль" data={industries} />
+          <InputSelect placeholder="Выберите отрасль" data={industries} />
         </div>
         <div className={styles.filter}>
           <p className={styles.subtitle}>оклад</p>

@@ -6,6 +6,7 @@ import Filters from './components/Filters/Filters'
 import { useFetchAllIndustries, useFetchAllVacations } from './hooks'
 
 import styles from './VacationsPage.module.scss'
+import InputSearch from '../../components/InputSearch'
 
 const VacationsPage: FC = () => {
   const {
@@ -20,7 +21,10 @@ const VacationsPage: FC = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         <Filters industries={industries} />
-        <VacationsList vacancies={vacancies} loading={loading} />
+        <div>
+          <InputSearch placeholder='Введите название вакансии'/>
+          <VacationsList vacancies={vacancies} loading={loading} />
+        </div>
       </div>
       <Pagination
         value={activePage}

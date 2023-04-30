@@ -1,20 +1,20 @@
 export const MOCK_DATA = [
   {
-    work: 'Designer',
+    profession: 'Designer',
     salary: 'з/п от 70000 руб',
-    timeLine: 'Полный рабочий день',
-    sity: 'Фербовщина',
+    position: 'Полный рабочий день',
+    city: 'Фербовщина',
   },
   {
-    work: 'Designer',
+    profession: 'Designer',
     salary: 'з/п от 70000 руб',
-    timeLine: 'Полный рабочий день',
-    sity: 'Фербовщина',
+    position: 'Полный рабочий день',
+    city: 'Фербовщина',
   },
   {
-    work: 'Designer',
+    profession: 'Designer',
     salary: 'з/п от 70000 руб',
-    timeLine: 'Полный рабочий день',
-    sity: 'Фербовщина',
+    position: 'Полный рабочий день',
+    city: 'Фербовщина',
   },
 ]
