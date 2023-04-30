@@ -1,4 +1,19 @@
 .container {
-  gap: 28px;
+  position: relative;
+}
+
+.content {
   display: flex;
+  gap: 28px;
+  padding: 40px 162px;
+}
+
+.pagination {
+  background-color: var(--grey100-color);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 44px;
+  position: sticky;
+  width: 100%;
 }
