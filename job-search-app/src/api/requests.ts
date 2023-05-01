@@ -26,7 +26,7 @@ export const fetchIndustries: FetchIndustries = async () => {
   try {
     const { data } = await axios.get(`${BASE_URL}/catalogues`, {
       headers: {
-        'x-secret-key': 'GEU4nvd3rej*jeh.eqp',
+        'x-secret-key': secretKey,
       },
     })
     const industries = data.map(({ title }: { title: string }) => title)
