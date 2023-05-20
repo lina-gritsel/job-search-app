@@ -17,3 +17,8 @@ interface TypeTown {
   hasMetro: boolean
   genitive: string
 }
+
+export interface FetchVacanciesParams {
+  page: number
+  search: string
+}

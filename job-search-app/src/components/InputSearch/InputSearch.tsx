@@ -5,7 +5,10 @@ import SearchIcon from '../../assets/icons/SearchIcon'
 
 import styles from './InputSearch.module.scss'
 
-const InputSearch: FC<{ placeholder: string }> = ({ placeholder }) => {
+const InputSearch: FC<{
+  placeholder: string
+  onChange: (args: any) => void
+}> = ({ onChange, placeholder }) => {
   const rightSection = <Button className={styles.btnSearch}>Поиск</Button>
 
   return (
@@ -13,6 +16,7 @@ const InputSearch: FC<{ placeholder: string }> = ({ placeholder }) => {
       size="sm"
       icon={<SearchIcon />}
       placeholder={placeholder}
+      onChange={onChange}
       rightSection={rightSection}
       rightSectionWidth={95}
       styles={{
@@ -20,7 +24,7 @@ const InputSearch: FC<{ placeholder: string }> = ({ placeholder }) => {
           height: 48,
           marginBottom: 16,
           padding: 12,
-          borderRadius: 8
+          borderRadius: 8,
         },
       }}
     />

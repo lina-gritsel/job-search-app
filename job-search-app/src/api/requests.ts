@@ -1,20 +1,31 @@
 import axios from 'axios'
 
-import { Vacation } from './types'
+import { FetchVacanciesParams, Vacation } from './types'
 
 export const BASE_URL = 'https://startup-summer-2023-proxy.onrender.com/2.0'
 const secretKey = process.env.REACT_APP_X_SECRET_KEY
 
-type FetchAllVacancies = (page: number) => Promise<Vacation[]>
-export const fetchAllVacancies: FetchAllVacancies = async (page) => {
+type FetchAllVacancies = ({
+  page,
+  search,
+}: FetchVacanciesParams) => Promise<Vacation[]>
+
+export const fetchAllVacancies: FetchAllVacancies = async ({
+  page,
+  search,
+}) => {
   try {
-    const { data } = await axios.get(`${BASE_URL}/vacancies?page=${page}`, {
-      headers: {
-        'x-secret-key': secretKey,
-        'X-Api-App-Id':
-          'v3.r.137440105.ffdbab114f92b821eac4e21f485343924a773131.06c3bdbb8446aeb91c35b80c42ff69eb9c457948',
+    const { data } = await axios.get(
+      `${BASE_URL}/vacancies?page=${page}&keyword=${search}`,
+      {
+        headers: {
+          'x-secret-key': secretKey,
+          'X-Api-App-Id':
+            'v3.r.137440105.ffdbab114f92b821eac4e21f485343924a773131.06c3bdbb8446aeb91c35b80c42ff69eb9c457948',
+        },
       },
-    })
+    )
+
     return data.objects
   } catch (error) {
     throw new Error(`${error}`)

@@ -7,6 +7,8 @@ export const useFetchAllVacations = () => {
   const [activePage, setPage] = useState<number>(1)
   const pageForRequest = activePage - 1
 
+  const [search, setSearch] = useState('')
+
   const {
     data,
     isLoading,
@@ -18,8 +20,8 @@ export const useFetchAllVacations = () => {
     isFetching: boolean
     isPreviousData: boolean
   } = useQuery(
-    ['fetchAllVacations', pageForRequest],
-    () => fetchAllVacancies(pageForRequest),
+    ['fetchAllVacations', pageForRequest, search],
+    () => fetchAllVacancies({ page: pageForRequest, search }),
     {
       refetchOnWindowFocus: false,
       staleTime: 60_000,
@@ -32,14 +34,23 @@ export const useFetchAllVacations = () => {
     loading: isLoading || isFetching,
     activePage,
     setPage,
+    setSearch,
   }
 }
 
 export const useFetchAllIndustries = () => {
-  const { data } = useQuery(['fetchAllIndustries'], () => fetchIndustries(), {
-    refetchOnWindowFocus: false,
-    staleTime: 60_000,
-  })
+  const {
+    data,
+    isLoading,
+    isFetching,
+  }: { data: any; isLoading: boolean; isFetching: boolean } = useQuery(
+    ['fetchAllIndustries'],
+    () => fetchIndustries(),
+    {
+      refetchOnWindowFocus: false,
+      staleTime: 60_000,
+    },
+  )
 
-  return { data: data || [] }
+  return { data: data || [], loading: isLoading || isFetching }
 }
