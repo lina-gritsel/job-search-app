@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { fetchIndustries, fetchAllVacancies } from '../../../api/requests'
 
-export const useFetchAllVacations = () => {
+export const useFetchAllVacations = (queryData: any) => {
   const [activePage, setPage] = useState<number>(1)
   const pageForRequest = activePage - 1
 
@@ -20,8 +20,14 @@ export const useFetchAllVacations = () => {
     isFetching: boolean
     isPreviousData: boolean
   } = useQuery(
-    ['fetchAllVacations', pageForRequest, search],
-    () => fetchAllVacancies({ page: pageForRequest, search }),
+    ['fetchAllVacations', pageForRequest, queryData, search],
+    () =>
+      fetchAllVacancies({
+        page: pageForRequest,
+        paymentFrom: queryData?.paymentFrom,
+        paymentTo: queryData?.paymentTo,
+        search,
+      }),
     {
       refetchOnWindowFocus: false,
       staleTime: 60_000,

@@ -20,5 +20,7 @@ interface TypeTown {
 
 export interface FetchVacanciesParams {
   page: number
+  paymentFrom: string
+  paymentTo: string
   search: string
 }

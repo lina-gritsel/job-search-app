@@ -1,25 +1,18 @@
-import { FC, useState } from 'react'
-import { Select } from '@mantine/core'
+import { FC } from 'react'
+import { Input } from '@mantine/core'
 
 interface InputNumericProps {
   placeholder: string
+  onChange: (args: any) => void
+  value: string
 }
 
-const InputNumeric: FC<InputNumericProps> = ({ placeholder }) => {
-  const [value, setValue] = useState<string | null>(null)
-
-  return (
-    <Select
-      value={value}
-      onChange={setValue}
-      placeholder={placeholder}
-      searchable
-      nothingFound="No options"
-      clearable
-      allowDeselect
-      data={['100', '200']}
-    />
-  )
+const InputNumeric: FC<InputNumericProps> = ({
+  value,
+  onChange,
+  placeholder,
+}) => {
+  return <Input value={value} onChange={onChange} placeholder={placeholder} />
 }
 
 export default InputNumeric

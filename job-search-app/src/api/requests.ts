@@ -7,16 +7,20 @@ const secretKey = process.env.REACT_APP_X_SECRET_KEY
 
 type FetchAllVacancies = ({
   page,
+  paymentFrom,
+  paymentTo,
   search,
 }: FetchVacanciesParams) => Promise<Vacation[]>
 
 export const fetchAllVacancies: FetchAllVacancies = async ({
   page,
+  paymentFrom,
+  paymentTo,
   search,
 }) => {
   try {
     const { data } = await axios.get(
-      `${BASE_URL}/vacancies?page=${page}&keyword=${search}`,
+      `${BASE_URL}/vacancies?page=${page}&keyword=${search}&payment_from=${paymentFrom}&payment_to=${paymentTo}`,
       {
         headers: {
           'x-secret-key': secretKey,

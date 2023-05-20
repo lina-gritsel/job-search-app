@@ -10,13 +10,15 @@ import InputSearch from '../../components/InputSearch'
 import { useDebounce } from '../../hooks'
 
 const VacationsPage: FC = () => {
+  const [queryData, setQueryData] = useState(null)
+
   const {
     data: vacancies,
     loading,
     activePage,
     setPage,
     setSearch,
-  } = useFetchAllVacations()
+  } = useFetchAllVacations(queryData)
 
   const { data: industries } = useFetchAllIndustries()
 
@@ -27,7 +29,7 @@ const VacationsPage: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <Filters industries={industries} />
+        <Filters industries={industries} setQueryData={setQueryData}/>
         <div>
           <InputSearch
             onChange={(e) => setSearchDebounced(e.target.value)}
