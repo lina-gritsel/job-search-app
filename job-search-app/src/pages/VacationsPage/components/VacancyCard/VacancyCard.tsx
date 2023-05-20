@@ -4,7 +4,7 @@ import Star from '../../../../assets/icons/Star'
 import { ParsedVacation } from '../../helpers'
 import { useVacationCard } from './hooks'
 
-import styles from './VacationCard.module.scss'
+import styles from './VacancyCard.module.scss'
 
 type Event = MouseEvent | TouchEvent | any
 

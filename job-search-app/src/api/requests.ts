@@ -51,5 +51,3 @@ export const fetchIndustries: FetchIndustries = async () => {
     throw new Error(`${error}`)
   }
 }
-
-// 'Content-Type': 'application/x-www-form-urlencoded',
