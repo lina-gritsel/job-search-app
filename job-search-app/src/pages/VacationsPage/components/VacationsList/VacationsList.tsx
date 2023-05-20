@@ -1,13 +1,11 @@
 import { FC } from 'react'
 
-import Location from '../../../../assets/icons/Location'
-import Star from '../../../../assets/icons/Star'
-import { MOCK_DATA } from '../../../../mockData'
 import { Vacation } from '../../../../api'
 
 import { parseVacanciesData } from '../../helpers'
 
 import styles from './VacationsList.module.scss'
+import VacationCard from '../VacancyCard'
 
 interface VacationsListProps {
   vacancies: Vacation[]
@@ -19,20 +17,15 @@ const VacationsList: FC<VacationsListProps> = ({ vacancies, loading }) => {
 
   return (
     <div className={styles.list}>
-      {parsedVacations.map(({ profession, salary, position, city }, index) => (
-        <div key={index} className={styles.container}>
-          <p className={styles.work}>{profession}</p>
-          <div className={styles.wrapper}>
-            <p className={styles.salary}>з/п от {salary} rub</p>
-            <p className={styles.timeLine}>{position}</p>
-          </div>
-          <div className={styles.location}>
-            <Location className={styles.locationIcon} />
-            <p className={styles.city}>{city}</p>
-          </div>
-          <Star className={styles.favorite} />
-        </div>
-      ))}
+      {loading ? (
+        <>Loading ...</>
+      ) : (
+        <>
+          {parsedVacations.map((vacation) => (
+            <VacationCard key={vacation?.id} {...vacation} />
+          ))}
+        </>
+      )}
     </div>
   )
 }

@@ -1,4 +1,5 @@
 export interface Vacation {
+  id: number
   profession: string
   payment_from: string
   type_of_work: TypeWork
@@ -24,3 +25,4 @@ export interface FetchVacanciesParams {
   paymentTo: string
   search: string
 }
+
