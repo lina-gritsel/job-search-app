@@ -1,27 +1,29 @@
 import { FC } from 'react'
 
+import Loader from '../../../../components/Loader'
 import { Vacation } from '../../../../api'
 
 import { parseVacanciesData } from '../../helpers'
 
-import styles from './VacationsList.module.scss'
 import VacationCard from '../VacancyCard'
 
-interface VacationsListProps {
+import styles from './VacanciesList.module.scss'
+
+interface VacanciesListProps {
   vacancies: Vacation[]
   loading: boolean
 }
 
-const VacationsList: FC<VacationsListProps> = ({ vacancies, loading }) => {
-  const parsedVacations = parseVacanciesData(vacancies)
+const VacanciesList: FC<VacanciesListProps> = ({ vacancies, loading }) => {
+  const parsedVacancies = parseVacanciesData(vacancies)
 
   return (
     <div className={styles.list}>
       {loading ? (
-        <>Loading ...</>
+        <Loader />
       ) : (
         <>
-          {parsedVacations.map((vacation) => (
+          {parsedVacancies.map((vacation) => (
             <VacationCard key={vacation?.id} {...vacation} />
           ))}
         </>
@@ -30,4 +32,4 @@ const VacationsList: FC<VacationsListProps> = ({ vacancies, loading }) => {
   )
 }
 
-export default VacationsList
+export default VacanciesList

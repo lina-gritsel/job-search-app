@@ -1,1 +1,1 @@
-export { useFetchAllVacations, useFetchAllIndustries } from './useVacationsPage'
+export { useFetchAllVacancies, useFetchAllIndustries } from './useVacanciesPage'

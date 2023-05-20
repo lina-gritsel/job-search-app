@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { fetchIndustries, fetchAllVacancies } from '../../../api/requests'
 
-export const useFetchAllVacations = (queryData: any) => {
+export const useFetchAllVacancies = (queryData: any) => {
   const [activePage, setPage] = useState<number>(1)
   const pageForRequest = activePage - 1
 

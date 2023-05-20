@@ -1,5 +1,5 @@
 export const PATHS = {
   PAGE_404: '*',
-  VACATIONS: '/',
+  VACANCIES: '/',
   FAVORITES: '/favorites',
 }

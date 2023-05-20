@@ -1,15 +1,17 @@
 import { FC, useState } from 'react'
 import { Pagination } from '@mantine/core'
 
-import VacationsList from './components/VacationsList'
+import { useFetchAllIndustries, useFetchAllVacancies } from './hooks'
+import VacanciesList from './components/VacanciesList'
 import Filters from './components/Filters/Filters'
-import { useFetchAllIndustries, useFetchAllVacations } from './hooks'
 
-import styles from './VacationsPage.module.scss'
 import InputSearch from '../../components/InputSearch'
 import { useDebounce } from '../../hooks'
 
-const VacationsPage: FC = () => {
+import styles from './VacanciesPage.module.scss'
+
+
+const VacanciesPage: FC = () => {
   const [queryData, setQueryData] = useState(null)
 
   const {
@@ -18,7 +20,7 @@ const VacationsPage: FC = () => {
     activePage,
     setPage,
     setSearch,
-  } = useFetchAllVacations(queryData)
+  } = useFetchAllVacancies(queryData)
 
   const { data: industries } = useFetchAllIndustries()
 
@@ -30,12 +32,12 @@ const VacationsPage: FC = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         <Filters industries={industries} setQueryData={setQueryData}/>
-        <div>
+        <div className={styles.searchableList}>
           <InputSearch
             onChange={(e) => setSearchDebounced(e.target.value)}
             placeholder="Введите название вакансии"
           />
-          <VacationsList vacancies={vacancies} loading={loading} />
+          <VacanciesList vacancies={vacancies} loading={loading} />
         </div>
       </div>
       <Pagination
@@ -48,5 +50,5 @@ const VacationsPage: FC = () => {
   )
 }
 
-export default VacationsPage
+export default VacanciesPage
  
