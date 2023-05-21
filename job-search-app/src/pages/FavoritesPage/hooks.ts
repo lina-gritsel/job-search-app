@@ -10,7 +10,7 @@ export const fetchFavorites = () => {
   const storageVacanciesIds = getStorageItemsByKey('favorites')
   const responses: any = []
 
-  storageVacanciesIds.map((id: number) => {
+  storageVacanciesIds.map((id: string) => {
     const response = fetchVacancy(id)
     responses.push(response)
   })

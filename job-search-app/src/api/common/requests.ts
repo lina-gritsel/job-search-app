@@ -20,7 +20,6 @@ export const fetchAllVacancies: FetchAllVacancies = async ({
   industry,
   search,
 }) => {
-  console.log(industry)
   try {
     const { data } = await axios.get(
       `${BASE_URL}/vacancies?page=${page}&keyword=${search}&payment_from=${paymentFrom}&payment_to=${paymentTo}&catalogues=${industry}`,
@@ -35,7 +34,7 @@ export const fetchAllVacancies: FetchAllVacancies = async ({
 
     return { data: data.objects, total: data?.total }
   } catch (error) {
-    throw new Error(`${error}`)
+    throw new Error(error)
   }
 }
 
@@ -50,11 +49,11 @@ export const fetchIndustries: FetchIndustries = async () => {
 
     return data
   } catch (error) {
-    throw new Error(`${error}`)
+    throw new Error(error)
   }
 }
 
-export const fetchVacancy = async (id: number) => {
+export const fetchVacancy = async (id: string) => {
   try {
     const { data } = await axios.get(`${BASE_URL}/vacancies/${id}`, {
       headers: {
@@ -64,6 +63,6 @@ export const fetchVacancy = async (id: number) => {
 
     return data
   } catch (error) {
-    throw new Error(`${error}`)
+    throw new Error(error)
   }
 }

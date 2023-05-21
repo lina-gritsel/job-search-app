@@ -24,13 +24,15 @@ const App: FC = () => {
 
   return (
     <>
-      {isAuth ? (
+      {/* {isAuth ? 
+      ( */}
         <QueryClientProvider client={queryClient}>
           <Router />
         </QueryClientProvider>
-      ) : (
+      {/* ) 
+      : (
         <Loader />
-      )}
+      )} */}
     </>
   )
 }

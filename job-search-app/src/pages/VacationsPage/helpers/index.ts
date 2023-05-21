@@ -8,7 +8,7 @@ export interface ParsedVacation {
   city: string
 }
 
-export const parseVacanciesData = (data: Vacation[]): ParsedVacation[] => {
+export const parseVacanciesData = (data: Vacation[] = []): ParsedVacation[] => {
   return data.map((vacancy: Vacation) => {
     return {
       id: vacancy.id?.toString(),
@@ -18,4 +18,14 @@ export const parseVacanciesData = (data: Vacation[]): ParsedVacation[] => {
       city: vacancy.town.title,
     }
   })
+}
+
+export const parseVacancy = (vacancy: Vacation) => {
+  return {
+    id: vacancy?.id?.toString(),
+    profession: vacancy?.profession,
+    salary: vacancy?.payment_from,
+    position: vacancy?.type_of_work?.title,
+    city: vacancy?.town?.title,
+  }
 }

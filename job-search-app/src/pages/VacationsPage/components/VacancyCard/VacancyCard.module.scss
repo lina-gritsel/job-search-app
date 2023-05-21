@@ -1,55 +1,74 @@
 .container {
-    background-color: var(--white-color);
-    border-radius: 12px;
-    border: 1px solid var(--grey200-color);
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-    padding: 24px;
-    position: relative;
-    width: 100%;
+  background-color: var(--white-color);
+  border-radius: 12px;
+  border: 1px solid var(--grey200-color);
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 24px;
+  position: relative;
+  width: 100%;
+}
+
+.work {
+  color: var(--blue-main-color);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  max-width: 600px;
+}
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  text-align: center;
+}
+
+.salary {
+  color: var(--black-color);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.timeLine {
+  color: var(--black-color);
+  line-height: 20px;
+}
+
+.location {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.locationIcon {
+  width: 20px;
+}
+
+.city {
+  color: var(--black-color);
+  line-height: 19px;
+}
+
+.favorite {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}
+
+.star,
+.activeStar {
+  cursor: pointer;
+}
+
+.star:hover {
+  path {
+    stroke: #3b7cd3;
   }
-  
-  .work {
-    color: var(--blue-main-color);
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 24px;
-    max-width: 600px;
-  }
-  
-  .wrapper {
-    display: flex;
-    gap: 12px;
-  }
-  
-  .salary {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 20px;
-  }
-  
-  .timeLine {
-    line-height: 20px;
-  }
-  
-  .location {
-    align-items: center;
-    display: flex;
-    gap: 8px;
-  }
-  
-  .locationIcon {
-    width: 20px;
-  }
-  
-  .city {
-    line-height: 19px;
-  }
-  
-  .favorite {
-    position: absolute;
-    right: 25px;
-    top: 25px;
-  }
-  
+}
+.activeStar {
+  fill: #3b7cd3;
+}
+

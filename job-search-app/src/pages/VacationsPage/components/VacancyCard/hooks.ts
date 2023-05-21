@@ -10,6 +10,8 @@ export const useVacationCard = (id: string) => {
   const [addedToFavoriteList, setAddedToFavoriteList] = useState<string[]>([])
 
   const addVacancyToFavoriteList = (event: Event) => {
+    event.preventDefault()
+
     if (isFavorited) return
     setAddedToFavoriteList([...addedToFavoriteList, id])
 
@@ -20,6 +22,8 @@ export const useVacationCard = (id: string) => {
   }
 
   const removeVacancyFromFavoriteList = (event: Event) => {
+    event.preventDefault()
+
     setAddedToFavoriteList(
       addedToFavoriteList.filter((vacancyId: string) => vacancyId !== id),
     )
