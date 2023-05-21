@@ -4,12 +4,13 @@
   border-radius: 12px;
   padding: 20px;
   max-width: 315px;
+  width: 100%;
   height: 355px;
 }
 
 .header {
   display: flex;
-  gap: 67px;
+  justify-content: space-between;
   padding-bottom: 32px;
 }
 
@@ -38,4 +39,32 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+@media (max-width: 1030px) {
+  .container {
+    max-width: 280px;
+    padding: 15px;
+    height: 315px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: none;
+  }
+
+  .title {
+    font: var(--font-text-4);
+    text-transform: capitalize;
+  }
+
+  .subtitle {
+    font: var(--font-text-5);
+    font-weight: 400;
+  }
+
+  .header {
+    padding-bottom: 20px;
+  }
 }

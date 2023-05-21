@@ -3,10 +3,11 @@
   background-color: #fff;
   display: flex;
   gap: 280px;
-  padding: 24px 162px;
+  padding: 24px 40px;
 }
 
 .logoWrapper {
+  align-items: center;
   display: flex;
   gap: 12px;
 }
@@ -20,4 +21,31 @@
   line-height: 36px;
   letter-spacing: -0.02em;
   text-transform: capitalize;
+}
+
+@media (max-width: 1030px) {
+  .wrapper {
+    gap: 130px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    height: 30px;
+  }
+
+  .logoWrapper {
+    gap: 4px;
+  }
+
+  .title {
+    font: var(--font-text-3);
+    font-weight: 600;
+  }
+
+  .wrapper {
+    gap: 30px;
+    padding: 15px;
+    justify-content: space-between;
+  }
 }

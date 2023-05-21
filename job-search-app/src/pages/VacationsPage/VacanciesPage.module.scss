@@ -5,7 +5,8 @@
 .content {
   display: flex;
   gap: 28px;
-  padding: 40px 162px;
+  padding: 40px;
+  justify-content: center;
 }
 
 .pagination {
@@ -21,4 +22,16 @@
 .searchableList {
   width: 100%;
   max-width: 773px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .pagination {
+    padding: 15px;
+  }
 }
