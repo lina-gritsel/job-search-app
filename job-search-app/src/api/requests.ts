@@ -51,3 +51,17 @@ export const fetchIndustries: FetchIndustries = async () => {
     throw new Error(`${error}`)
   }
 }
+
+export const fetchVacancy = async ( id: number) => {
+  try {
+    const { data } = await axios.get(`${BASE_URL}/vacancies/${id}`, {
+      headers: {
+        'x-secret-key': secretKey,
+      },
+    })
+    
+    return data
+  } catch (error) {
+    throw new Error(`${error}`)
+  }
+}

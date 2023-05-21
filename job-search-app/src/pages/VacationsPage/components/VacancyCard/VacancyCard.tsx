@@ -38,14 +38,14 @@ const VacationCard: FC<ParsedVacation> = ({
             className={styles.favorite}
             onClick={(event: Event) => removeVacancyFromFavoriteList(event)}
           >
-            <Star className={styles.starIcon} />
+            <Star color="#3b7cd3" />
           </div>
         ) : (
           <div
             className={styles.favorite}
             onClick={(event: Event) => addVacancyToFavoriteList(event)}
           >
-            <Star className={styles.starIcon} />
+            <Star />
           </div>
         )}
       </div>

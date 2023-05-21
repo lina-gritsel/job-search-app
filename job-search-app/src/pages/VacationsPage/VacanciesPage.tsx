@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Pagination } from '@mantine/core'
 
 import { useFetchAllIndustries, useFetchAllVacancies } from './hooks'
