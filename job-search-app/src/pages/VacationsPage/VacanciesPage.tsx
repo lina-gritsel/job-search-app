@@ -10,17 +10,16 @@ import { useDebounce } from '../../hooks'
 
 import styles from './VacanciesPage.module.scss'
 
-
 const VacanciesPage: FC = () => {
-  const [queryData, setQueryData] = useState(null)
+  const [page, setPage] = useState<number>(0)
 
   const {
     data: vacancies,
+    totalPage,
     loading,
-    activePage,
-    setPage,
     setSearch,
-  } = useFetchAllVacancies(queryData)
+    setQueryData,
+  } = useFetchAllVacancies(page)
 
   const { data: industries } = useFetchAllIndustries()
 
@@ -31,7 +30,7 @@ const VacanciesPage: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <Filters industries={industries} setQueryData={setQueryData}/>
+        <Filters industries={industries} setQueryData={setQueryData} />
         <div className={styles.searchableList}>
           <InputSearch
             onChange={(e) => setSearchDebounced(e.target.value)}
@@ -41,9 +40,12 @@ const VacanciesPage: FC = () => {
         </div>
       </div>
       <Pagination
-        value={activePage}
+        value={page}
         onChange={setPage}
-        total={3}
+        total={totalPage}
+        siblings={1}
+        onPreviousPage={() => setPage((prev) => prev - 1)}
+        onNextPage={() => setPage((prev) => prev + 1)}
         className={styles.pagination}
       />
     </div>
@@ -51,4 +53,3 @@ const VacanciesPage: FC = () => {
 }
 
 export default VacanciesPage
- 

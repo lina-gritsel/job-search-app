@@ -1,20 +1,28 @@
 import { FC, useState } from 'react'
 import { Button } from '@mantine/core'
 
+import { VacanciesQueryParams } from '../../hooks/useVacanciesPage'
 import InputNumeric from '../../../../components/InputNumeric'
 import InputSelect from '../../../../components/InputSelect'
 
 import styles from './Filters.module.scss'
 
-const Filters: FC<{
-  industries: string[]
-  setQueryData: (params: any) => void
-}> = ({ industries, setQueryData }) => {
+type Event = { target: { value: string } }
+
+interface FiltersProps {
+  industries: any[]
+  setQueryData: (params: VacanciesQueryParams) => void
+}
+
+const Filters: FC<FiltersProps> = ({ industries, setQueryData }) => {
+  const [industry, setIndustry] = useState<string>('')
   const [paymentFrom, setPaymentFrom] = useState<string>('')
   const [paymentTo, setPaymentTo] = useState<string>('')
 
   const onSubmit = () => {
-    setQueryData({ industry: '', paymentFrom, paymentTo })
+    const key = industries.find(({ title }) => title === industry).key
+
+    setQueryData({ industry: key, paymentFrom, paymentTo })
   }
 
   const onClear = () => {}
@@ -30,18 +38,23 @@ const Filters: FC<{
       <div className={styles.content}>
         <div className={styles.filter}>
           <p className={styles.subtitle}>отрасль</p>
-          <InputSelect placeholder="Выберите отрасль" data={industries} />
+          <InputSelect
+            value={industry}
+            onChange={setIndustry}
+            placeholder="Выберите отрасль"
+            data={industries}
+          />
         </div>
         <div className={styles.filter}>
           <p className={styles.subtitle}>оклад</p>
           <InputNumeric
             value={paymentFrom}
-            onChange={(e) => setPaymentFrom(e.target.value)}
+            onChange={(event: Event) => setPaymentFrom(event.target.value)}
             placeholder="От"
           />
           <InputNumeric
             value={paymentTo}
-            onChange={(e) => setPaymentTo(e.target.value)}
+            onChange={(event: Event) => setPaymentTo(event.target.value)}
             placeholder="До"
           />
         </div>

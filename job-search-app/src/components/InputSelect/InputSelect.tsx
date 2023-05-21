@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Select } from '@mantine/core'
 
 import SelectArrow from '../../assets/icons/SelectArrow'
@@ -6,17 +6,24 @@ import styles from './InputSelect.module.scss'
 
 interface InputSelectProps {
   placeholder: string
-  data: string[]
+  data: any[]
+  onChange: (value: string) => void
+  value: string
 }
 
-const InputSelect: FC<InputSelectProps> = ({ placeholder, data }) => {
-  const [value, setValue] = useState<string | null>('')
+const InputSelect: FC<InputSelectProps> = ({
+  placeholder,
+  data,
+  value,
+  onChange,
+}) => {
+  const industries = data.map(({ title }: { title: string }) => title)
 
   return (
     <Select
       className={styles.input}
       value={value}
-      onChange={setValue}
+      onChange={onChange}
       placeholder={placeholder}
       searchable
       nothingFound="No options"
@@ -25,7 +32,7 @@ const InputSelect: FC<InputSelectProps> = ({ placeholder, data }) => {
       rightSection={<SelectArrow />}
       rightSectionWidth={30}
       styles={{ rightSection: { pointerEvents: 'none' } }}
-      data={data}
+      data={industries}
     />
   )
 }

@@ -1,13 +1,20 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 
-import { fetchIndustries, fetchAllVacancies } from '../../../api/requests'
+import {
+  fetchIndustries,
+  fetchAllVacancies,
+} from '../../../api/common/requests'
 
-export const useFetchAllVacancies = (queryData: any) => {
-  const [activePage, setPage] = useState<number>(1)
-  const pageForRequest = activePage - 1
+export interface VacanciesQueryParams {
+  paymentFrom: any
+  paymentTo: any
+  industry: any
+}
 
+export const useFetchAllVacancies = (page: number) => {
   const [search, setSearch] = useState('')
+  const [queryData, setQueryData] = useState<VacanciesQueryParams | null>(null)
 
   const {
     data,
@@ -20,12 +27,13 @@ export const useFetchAllVacancies = (queryData: any) => {
     isFetching: boolean
     isPreviousData: boolean
   } = useQuery(
-    ['fetchAllVacations', pageForRequest, queryData, search],
+    ['fetchAllVacations', page, queryData, search],
     () =>
       fetchAllVacancies({
-        page: pageForRequest,
+        page: page,
         paymentFrom: queryData?.paymentFrom,
         paymentTo: queryData?.paymentTo,
+        industry: queryData?.industry,
         search,
       }),
     {
@@ -35,12 +43,15 @@ export const useFetchAllVacancies = (queryData: any) => {
     },
   )
 
+  const totalPage = Math.ceil((data?.total > 100 ? 100 : data?.total) / 4)
+
   return {
-    data: data || [],
+    data: data?.data || [],
+    totalPage,
     loading: isLoading || isFetching,
-    activePage,
-    setPage,
+    setQueryData,
     setSearch,
+    isPreviousData,
   }
 }
 
@@ -58,5 +69,5 @@ export const useFetchAllIndustries = () => {
     },
   )
 
-  return { data: data || [], loading: isLoading || isFetching }
+  return {data: data || [], loading: isLoading || isFetching }
 }

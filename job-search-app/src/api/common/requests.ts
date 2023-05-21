@@ -3,24 +3,27 @@ import axios from 'axios'
 import { FetchVacanciesParams, Vacation } from './types'
 
 export const BASE_URL = 'https://startup-summer-2023-proxy.onrender.com/2.0'
-const secretKey = process.env.REACT_APP_X_SECRET_KEY
+const secretKey = process.env.REACT_APP_SECRET_KEY
 
 type FetchAllVacancies = ({
   page,
   paymentFrom,
   paymentTo,
   search,
-}: FetchVacanciesParams) => Promise<Vacation[]>
+  industry,
+}: FetchVacanciesParams) => Promise<{ data: Vacation[]; total: number }>
 
 export const fetchAllVacancies: FetchAllVacancies = async ({
   page,
   paymentFrom,
   paymentTo,
+  industry,
   search,
 }) => {
+  console.log(industry)
   try {
     const { data } = await axios.get(
-      `${BASE_URL}/vacancies?page=${page}&keyword=${search}&payment_from=${paymentFrom}&payment_to=${paymentTo}`,
+      `${BASE_URL}/vacancies?page=${page}&keyword=${search}&payment_from=${paymentFrom}&payment_to=${paymentTo}&catalogues=${industry}`,
       {
         headers: {
           'x-secret-key': secretKey,
@@ -30,7 +33,7 @@ export const fetchAllVacancies: FetchAllVacancies = async ({
       },
     )
 
-    return data.objects
+    return { data: data.objects, total: data?.total }
   } catch (error) {
     throw new Error(`${error}`)
   }
@@ -44,22 +47,21 @@ export const fetchIndustries: FetchIndustries = async () => {
         'x-secret-key': secretKey,
       },
     })
-    const industries = data.map(({ title }: { title: string }) => title)
 
-    return industries
+    return data
   } catch (error) {
     throw new Error(`${error}`)
   }
 }
 
-export const fetchVacancy = async ( id: number) => {
+export const fetchVacancy = async (id: number) => {
   try {
     const { data } = await axios.get(`${BASE_URL}/vacancies/${id}`, {
       headers: {
         'x-secret-key': secretKey,
       },
     })
-    
+
     return data
   } catch (error) {
     throw new Error(`${error}`)
