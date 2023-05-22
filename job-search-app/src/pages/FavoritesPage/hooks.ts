@@ -2,38 +2,24 @@ import { getStorageItemsByKey } from '../../utils'
 import { fetchVacancy } from '../../api'
 import { useQuery } from '@tanstack/react-query'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const fetchFavorites = () => {
-  const [favorites, setFavorites] = useState<any>([])
-
   const storageVacanciesIds = getStorageItemsByKey('favorites')
-  const responses: any = []
+  const promise = []
+  const [data, setData] = useState([])
 
-  storageVacanciesIds.map((id: string) => {
-    const response = fetchVacancy(id)
-    responses.push(response)
-  })
+  useEffect(() => {
+    (async () => {
+      storageVacanciesIds.filter((vacancyId: string) =>
+        promise.push(fetchVacancy(vacancyId)),
+      )
 
-  // const waitingFavorites = async () => {
-  //   const result = await Promise.all(responses)
+      const favorites = await Promise.all(promise)
 
-  //   setFavorites(result)
-  // }
-  // waitingFavorites()
+      setData(favorites)
+    })()
+  }, [])
 
-  // storageVacanciesIds.map((id: number) => {
-  //   const { data, isLoading, isFetching } = useQuery(
-  //     ['fetchFavorites'],
-  //     () => fetchVacancy(id),
-  //     {
-  //       refetchOnWindowFocus: false,
-  //       staleTime: 60_000,
-  //       keepPreviousData: true,
-  //     },
-  //   )
-  //   favorites.push(data)
-  // })
-
-  return { favorites }
+  return { favorites: data }
 }

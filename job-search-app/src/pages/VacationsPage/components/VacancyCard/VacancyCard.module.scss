@@ -15,7 +15,7 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
-  max-width: 600px;
+  padding-right: 40px;
 }
 
 .wrapper {
@@ -72,3 +72,39 @@
   fill: #3b7cd3;
 }
 
+@media (max-width: 786px) {
+  .container {
+    padding: 16px;
+    gap: 8px;
+  }
+
+  .work {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .salary {
+    font-size: 14px;
+  }
+
+  .wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeLine {
+    font-size: 14px;
+  }
+
+  .city {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  .work {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

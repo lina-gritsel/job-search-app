@@ -1,21 +1,20 @@
 import { FC } from 'react'
 
 import { fetchFavorites } from './hooks'
-import VacancyCard from '../VacationsPage/components/VacancyCard'
+import VacationCard from '../VacationsPage/components/VacancyCard'
 import { parseVacanciesData } from '../VacationsPage/helpers'
 
-const FavoritesPage: FC = () => {
-  // const { favorites } = fetchFavorites()
-  // const parseFavorites = parseVacanciesData(favorites)
+import styles from './FavoritesPage.module.scss'
 
-  // console.log(parseFavorites)
+const FavoritesPage: FC = () => {
+  const { favorites } = fetchFavorites()
+  const parseVacancies = parseVacanciesData(favorites)
+
   return (
-    <div>
-      {
-        // parseFavorites.map((vacancy)=>{
-        //   <VacancyCard />
-        // })
-      }
+    <div className={styles.container}>
+      {parseVacancies.map((vacancy) => (
+        <VacationCard key={vacancy?.id} {...vacancy} />
+      ))}
     </div>
   )
 }
