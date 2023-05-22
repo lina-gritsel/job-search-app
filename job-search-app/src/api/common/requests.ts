@@ -1,9 +1,5 @@
-import axios from 'axios'
-
 import { FetchVacanciesParams, Vacation } from './types'
-
-export const BASE_URL = 'https://startup-summer-2023-proxy.onrender.com/2.0'
-const secretKey = process.env.REACT_APP_SECRET_KEY
+import instance from '../instance'
 
 type FetchAllVacancies = ({
   page,
@@ -11,6 +7,7 @@ type FetchAllVacancies = ({
   paymentTo,
   search,
   industry,
+  count,
 }: FetchVacanciesParams) => Promise<{ data: Vacation[]; total: number }>
 
 export const fetchAllVacancies: FetchAllVacancies = async ({
@@ -19,17 +16,11 @@ export const fetchAllVacancies: FetchAllVacancies = async ({
   paymentTo,
   industry,
   search,
+  count,
 }) => {
   try {
-    const { data } = await axios.get(
-      `${BASE_URL}/vacancies?page=${page}&keyword=${search}&payment_from=${paymentFrom}&payment_to=${paymentTo}&catalogues=${industry}`,
-      {
-        headers: {
-          'x-secret-key': secretKey,
-          'X-Api-App-Id':
-            'v3.r.137440105.ffdbab114f92b821eac4e21f485343924a773131.06c3bdbb8446aeb91c35b80c42ff69eb9c457948',
-        },
-      },
+    const { data } = await instance.get(
+      `vacancies?page=${page}&count=${count}&keyword=${search}&payment_from=${paymentFrom}&payment_to=${paymentTo}&catalogues=${industry}`,
     )
 
     return { data: data.objects, total: data?.total }
@@ -41,11 +32,7 @@ export const fetchAllVacancies: FetchAllVacancies = async ({
 type FetchIndustries = () => Promise<string[]>
 export const fetchIndustries: FetchIndustries = async () => {
   try {
-    const { data } = await axios.get(`${BASE_URL}/catalogues`, {
-      headers: {
-        'x-secret-key': secretKey,
-      },
-    })
+    const { data } = await instance.get('catalogues')
 
     return data
   } catch (error) {
@@ -55,11 +42,7 @@ export const fetchIndustries: FetchIndustries = async () => {
 
 export const fetchVacancy = async (id: string) => {
   try {
-    const { data } = await axios.get(`${BASE_URL}/vacancies/${id}`, {
-      headers: {
-        'x-secret-key': secretKey,
-      },
-    })
+    const { data } = await instance.get(`vacancies/${id}`)
 
     return data
   } catch (error) {

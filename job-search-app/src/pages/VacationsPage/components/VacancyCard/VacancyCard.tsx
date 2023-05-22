@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { NavLink } from 'react-router-dom'
 import classNames from 'classnames'
+import { NavLink } from 'react-router-dom'
 
 import Location from '../../../../assets/icons/Location'
 import Star from '../../../../assets/icons/Star'
@@ -19,6 +19,7 @@ interface VacationCardProps {
   position: string
   city: string
   className?: string
+  onHide?: (id: string) => void
 }
 
 const VacationCard: FC<VacationCardProps> = ({
@@ -28,6 +29,7 @@ const VacationCard: FC<VacationCardProps> = ({
   city,
   id,
   className,
+  onHide,
 }) => {
   const {
     addVacancyToFavoriteList,
@@ -56,7 +58,10 @@ const VacationCard: FC<VacationCardProps> = ({
         {isFavorited || addedToFavoriteList.includes(id) ? (
           <div
             className={styles.favorite}
-            onClick={(event: Event) => removeVacancyFromFavoriteList(event)}
+            onClick={(event: Event) => {
+              removeVacancyFromFavoriteList(event)
+              !!onHide && onHide(id)
+            }}
           >
             <Star
               className={styles.activeStar}

@@ -1,31 +1,30 @@
 import { FC } from 'react'
 
-import EmptyList from '../../components/EmptyList'
-import Loader from '../../components/Loader'
-
 import VacationCard from '../VacationsPage/components/VacancyCard'
 import { parseVacanciesData } from '../VacationsPage/helpers'
-
+import EmptyList from '../../components/EmptyList'
+import Loader from '../../components/Loader'
 import { fetchFavorites } from './hooks'
 
 import styles from './FavoritesPage.module.scss'
 
 const FavoritesPage: FC = () => {
-  const { favorites, storageVacansies } = fetchFavorites()
+  const { favorites, storageVacancies, hideFavorite } = fetchFavorites()
+
   const parseVacancies = parseVacanciesData(favorites)
-  const isFavoriteVacansiesExist = !!storageVacansies.length
+  const isFavoriteVacanciesExist = !!storageVacancies.length
 
   return (
     <>
       <div
-        className={isFavoriteVacansiesExist ? styles.container : styles.hidden}
+        className={isFavoriteVacanciesExist ? styles.container : styles.hidden}
       >
-        {!favorites.length && !!storageVacansies.length && <Loader />}
+        {!favorites.length && !!storageVacancies.length && <Loader />}
         {parseVacancies.map((vacancy) => (
-          <VacationCard key={vacancy?.id} {...vacancy} />
+          <VacationCard key={vacancy?.id} onHide={hideFavorite} {...vacancy} />
         ))}
       </div>
-      {!isFavoriteVacansiesExist && <EmptyList />}
+      {!isFavoriteVacanciesExist && <EmptyList />}
     </>
   )
 }

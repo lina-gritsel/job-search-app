@@ -13,6 +13,8 @@ export interface VacanciesQueryParams {
 }
 
 export const useFetchAllVacancies = (page: number) => {
+  const LIMIT = 4
+
   const [search, setSearch] = useState('')
   const [queryData, setQueryData] = useState<VacanciesQueryParams | null>(null)
 
@@ -35,6 +37,7 @@ export const useFetchAllVacancies = (page: number) => {
         paymentTo: queryData?.paymentTo,
         industry: queryData?.industry,
         search,
+        count: LIMIT,
       }),
     {
       refetchOnWindowFocus: false,
@@ -43,7 +46,7 @@ export const useFetchAllVacancies = (page: number) => {
     },
   )
 
-  const totalPage = Math.ceil((data?.total > 100 ? 100 : data?.total) / 4)
+  const totalPage = Math.ceil((data?.total > 100 ? 500 : data?.total) / LIMIT)
 
   return {
     data: data?.data || [],
@@ -69,5 +72,5 @@ export const useFetchAllIndustries = () => {
     },
   )
 
-  return {data: data || [], loading: isLoading || isFetching }
+  return { data: data || [], loading: isLoading || isFetching }
 }

@@ -5,7 +5,7 @@ export const getAccessToken = () => Cookies.get('access_token')
 export const getRefreshToken = () => Cookies.get('refresh_token')
 export const isAuthenticated = () => !!getAccessToken()
 
-import { instance } from '../instance'
+import instance from '../instance'
 import { AuthResponseParams } from './types'
 
 export const getAuthorization = async () => {

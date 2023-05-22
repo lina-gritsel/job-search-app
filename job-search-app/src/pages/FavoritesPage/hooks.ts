@@ -1,13 +1,18 @@
+import { useEffect, useState } from 'react'
+
+import { create } from 'zustand'
+import { produce } from 'immer'
+
 import { getStorageItemsByKey } from '../../utils'
 import { fetchVacancy } from '../../api'
-import { useQuery } from '@tanstack/react-query'
-
-import { useEffect, useState } from 'react'
 
 export const fetchFavorites = () => {
   const storageVacanciesIds = getStorageItemsByKey('favorites')
-  const promise = []
+  const { hiddenFavoriteIds, hideFavorite } = useHiddenFavoriteIds()
+
   const [data, setData] = useState([])
+
+  const promise = []
 
   useEffect(() => {
     (async () => {
@@ -21,5 +26,24 @@ export const fetchFavorites = () => {
     })()
   }, [])
 
-  return { favorites: data, storageVacansies: storageVacanciesIds }
+  return {
+    favorites:
+      data?.filter(({ id }) => !hiddenFavoriteIds.includes(String(id))) || [],
+    hideFavorite,
+    storageVacancies: storageVacanciesIds,
+  }
 }
+
+interface HiddenFavoriteIdsState {
+  hiddenFavoriteIds: string[]
+  hideFavorite: (vacancyId: string) => void
+}
+const useHiddenFavoriteIds = create<HiddenFavoriteIdsState>((set) => ({
+  hiddenFavoriteIds: [],
+  hideFavorite: (vacancyId) =>
+    set(
+      produce((state: HiddenFavoriteIdsState) => {
+        state.hiddenFavoriteIds = [...state.hiddenFavoriteIds, vacancyId]
+      }),
+    ),
+}))

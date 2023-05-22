@@ -25,4 +25,5 @@ export interface FetchVacanciesParams {
   paymentTo: string
   industry: string
   search: string
+  count: number
 }
