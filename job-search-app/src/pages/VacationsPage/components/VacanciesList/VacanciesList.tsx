@@ -8,6 +8,7 @@ import { parseVacanciesData } from '../../helpers'
 import VacationCard from '../VacancyCard'
 
 import styles from './VacanciesList.module.scss'
+import EmptyList from '../../../../components/EmptyList'
 
 interface VacanciesListProps {
   vacancies: Vacation[]
@@ -23,6 +24,7 @@ const VacanciesList: FC<VacanciesListProps> = ({ vacancies, loading }) => {
         <Loader />
       ) : (
         <>
+          {!vacancies.length && <EmptyList className={styles.empty}/>}
           {parsedVacancies.map((vacation) => (
             <VacationCard key={vacation?.id} {...vacation} />
           ))}

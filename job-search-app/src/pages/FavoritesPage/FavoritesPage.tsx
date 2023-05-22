@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
+import EmptyList from '../../components/EmptyList'
 import Loader from '../../components/Loader'
 
 import VacationCard from '../VacationsPage/components/VacancyCard'
 import { parseVacanciesData } from '../VacationsPage/helpers'
 
-import EmptyList from './components/EmptyList'
 import { fetchFavorites } from './hooks'
 
 import styles from './FavoritesPage.module.scss'
