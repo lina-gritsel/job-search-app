@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import Loader from '../../../../components/Loader'
-import { Vacation } from '../../../../api'
+import { Vacancy } from '../../../../api'
 
 import { parseVacanciesData } from '../../helpers'
 
@@ -11,7 +11,7 @@ import styles from './VacanciesList.module.scss'
 import EmptyList from '../../../../components/EmptyList'
 
 interface VacanciesListProps {
-  vacancies: Vacation[]
+  vacancies: Vacancy[]
   loading: boolean
 }
 

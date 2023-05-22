@@ -4,13 +4,14 @@ import { Button } from '@mantine/core'
 import { VacanciesQueryParams } from '../../hooks/useVacanciesPage'
 import InputNumeric from '../../../../components/InputNumeric'
 import InputSelect from '../../../../components/InputSelect'
+import { Industries } from '../../../../api'
 
 import styles from './Filters.module.scss'
 
 type Event = { target: { value: string } }
 
 interface FiltersProps {
-  industries: any[]
+  industries: Industries[]
   setQueryData: (params: VacanciesQueryParams) => void
 }
 
@@ -20,7 +21,7 @@ const Filters: FC<FiltersProps> = ({ industries, setQueryData }) => {
   const [paymentTo, setPaymentTo] = useState<string>('')
 
   const onSubmit = () => {
-    const key = industries.find(({ title }) => title === industry).key
+    const key = String(industries.find(({ title }) => title === industry).key)
 
     setQueryData({ industry: key, paymentFrom, paymentTo })
   }

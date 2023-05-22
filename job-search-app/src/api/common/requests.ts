@@ -1,4 +1,4 @@
-import { FetchVacanciesParams, Vacation } from './types'
+import { FetchVacanciesParams, Industries, Vacancies } from './types'
 import instance from '../instance'
 
 type FetchAllVacancies = ({
@@ -8,7 +8,7 @@ type FetchAllVacancies = ({
   search,
   industry,
   count,
-}: FetchVacanciesParams) => Promise<{ data: Vacation[]; total: number }>
+}: FetchVacanciesParams) => Promise<Vacancies>
 
 export const fetchAllVacancies: FetchAllVacancies = async ({
   page,
@@ -29,7 +29,7 @@ export const fetchAllVacancies: FetchAllVacancies = async ({
   }
 }
 
-type FetchIndustries = () => Promise<string[]>
+type FetchIndustries = () => Promise<Industries[]>
 export const fetchIndustries: FetchIndustries = async () => {
   try {
     const { data } = await instance.get('catalogues')

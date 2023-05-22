@@ -5,11 +5,12 @@ import {
   fetchIndustries,
   fetchAllVacancies,
 } from '../../../api/common/requests'
+import { Industries, Vacancies } from '../../../api'
 
 export interface VacanciesQueryParams {
-  paymentFrom: any
-  paymentTo: any
-  industry: any
+  paymentFrom: string
+  paymentTo: string
+  industry: string
 }
 
 export const useFetchAllVacancies = (page: number) => {
@@ -24,12 +25,12 @@ export const useFetchAllVacancies = (page: number) => {
     isFetching,
     isPreviousData,
   }: {
-    data: any
+    data: Vacancies
     isLoading: boolean
     isFetching: boolean
     isPreviousData: boolean
   } = useQuery(
-    ['fetchAllVacations', page, queryData, search],
+    ['fetchAllVacancies', page, queryData, search],
     () =>
       fetchAllVacancies({
         page: page,
@@ -63,7 +64,7 @@ export const useFetchAllIndustries = () => {
     data,
     isLoading,
     isFetching,
-  }: { data: any; isLoading: boolean; isFetching: boolean } = useQuery(
+  }: { data: Industries[]; isLoading: boolean; isFetching: boolean } = useQuery(
     ['fetchAllIndustries'],
     () => fetchIndustries(),
     {

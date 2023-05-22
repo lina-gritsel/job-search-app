@@ -1,4 +1,4 @@
-export interface Vacation {
+export interface Vacancy {
   id: number
   profession: string
   payment_from: string
@@ -26,4 +26,17 @@ export interface FetchVacanciesParams {
   industry: string
   search: string
   count: number
+}
+
+export interface Industries {
+  key: number
+  title: string
+  title_rus: string
+  title_trimmed: string
+  url_rus: string
+}
+
+export interface Vacancies{
+  data: Vacancy[]
+  total: number
 }

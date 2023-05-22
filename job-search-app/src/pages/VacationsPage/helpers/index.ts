@@ -1,4 +1,4 @@
-import { Vacation } from '../../../api'
+import { Vacancy } from '../../../api'
 
 export interface ParsedVacation {
   id: string
@@ -8,8 +8,8 @@ export interface ParsedVacation {
   city: string
 }
 
-export const parseVacanciesData = (data: Vacation[] = []): ParsedVacation[] => {
-  return data.map((vacancy: Vacation) => {
+export const parseVacanciesData = (data: Vacancy[] = []): ParsedVacation[] => {
+  return data.map((vacancy: Vacancy) => {
     return {
       id: vacancy.id?.toString(),
       profession: vacancy.profession,
@@ -20,7 +20,7 @@ export const parseVacanciesData = (data: Vacation[] = []): ParsedVacation[] => {
   })
 }
 
-export const parseVacancy = (vacancy: Vacation) => {
+export const parseVacancy = (vacancy: Vacancy) => {
   return {
     id: vacancy?.id?.toString(),
     profession: vacancy?.profession,

@@ -2,11 +2,12 @@ import { FC } from 'react'
 import { Select } from '@mantine/core'
 
 import SelectArrow from '../../assets/icons/SelectArrow'
+import { Industries } from '../../api'
 import styles from './InputSelect.module.scss'
 
 interface InputSelectProps {
   placeholder: string
-  data: any[]
+  data: Industries[]
   onChange: (value: string) => void
   value: string
 }
