@@ -33,3 +33,23 @@
   height: 42px;
   width: 164px;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding-top: 70px;
+  }
+
+  .emptyIcon {
+    height: 180px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .link {
+    height: 32px;
+    width: 140px;
+    font-size: 14px;
+  }
+}

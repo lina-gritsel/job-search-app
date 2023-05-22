@@ -1,4 +1,24 @@
 .btnSearch {
   border-radius: 8px;
+  display: block;
   width: 83px;
+}
+
+.searchIcon {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .btnSearch {
+    width: 40px;
+    padding: 0;
+    right: -17px !important;
+  }
+  .searchTitle {
+    display: none;
+  }
+  .searchIcon {
+    display: block;
+    width: 15px;
+  }
 }

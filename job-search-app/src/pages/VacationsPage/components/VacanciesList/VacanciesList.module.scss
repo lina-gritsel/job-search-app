@@ -8,6 +8,12 @@
   align-items: center;
 }
 
-.list::-webkit-scrollbar{
+.list::-webkit-scrollbar {
   display: none;
+}
+
+@media (max-width: 768px) {
+  .list {
+    height: 100%;
+  }
 }

@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { Button, Input } from '@mantine/core'
 
+import searchIcon from '../../assets/images/search.png'
+
 import SearchIcon from '../../assets/icons/SearchIcon'
 
 import styles from './InputSearch.module.scss'
@@ -10,7 +12,12 @@ const InputSearch: FC<{
   onChange: (args: any) => void
   className?: string
 }> = ({ onChange, placeholder, className }) => {
-  const rightSection = <Button className={styles.btnSearch}>Поиск</Button>
+  const rightSection = (
+    <Button className={styles.btnSearch}>
+      <p className={styles.searchTitle}> Поиск</p>
+      <img className={styles.searchIcon} src={searchIcon} alt="search" />
+    </Button>
+  )
 
   return (
     <Input
