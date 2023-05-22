@@ -11,7 +11,7 @@ import { useDebounce } from '../../hooks'
 import styles from './VacanciesPage.module.scss'
 
 const VacanciesPage: FC = () => {
-  const [page, setPage] = useState<number>(0)
+  const [page, setPage] = useState<number>(1)
 
   const {
     data: vacancies,

@@ -25,7 +25,6 @@ const InputSelect: FC<InputSelectProps> = ({
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      searchable
       nothingFound="No options"
       clearable
       allowDeselect

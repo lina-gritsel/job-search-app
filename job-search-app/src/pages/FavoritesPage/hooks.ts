@@ -47,3 +47,24 @@ const useHiddenFavoriteIds = create<HiddenFavoriteIdsState>((set) => ({
       }),
     ),
 }))
+
+export const usePagination = (vacancies) => {
+  const NUMBER_OF_VACANCIES_ON_PAGE = 4
+
+  const [page, setPage] = useState<number>(2)
+
+  const totalPage = Math.ceil(vacancies.length / 4)
+
+  const currentVacancies = [...vacancies].splice(
+    (page - 1) * NUMBER_OF_VACANCIES_ON_PAGE,
+    NUMBER_OF_VACANCIES_ON_PAGE,
+  )
+
+  useEffect(() => {
+    if (currentVacancies.length === 0) {
+      setPage((prev) => prev - 1)
+    }
+  }, [currentVacancies.length])
+
+  return { page, setPage, totalPage, currentVacancies }
+}

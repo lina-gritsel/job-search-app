@@ -5,11 +5,28 @@
   gap: 16px;
   margin: 0 auto;
   max-width: 773px;
-  padding: 40px;
+  padding: 40px 40px 0;
+}
+
+.vacanciesList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: calc(100vh - 225px);
 }
 
 .hidden {
   display: none;
+}
+
+.pagination {
+  background-color: var(--grey100-color);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  position: sticky;
+  width: 100%;
 }
 
 @media (max-width: 786px) {
