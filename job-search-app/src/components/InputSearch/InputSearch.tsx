@@ -8,11 +8,13 @@ import styles from './InputSearch.module.scss'
 const InputSearch: FC<{
   placeholder: string
   onChange: (args: any) => void
-}> = ({ onChange, placeholder }) => {
+  className?: string
+}> = ({ onChange, placeholder, className }) => {
   const rightSection = <Button className={styles.btnSearch}>Поиск</Button>
 
   return (
     <Input
+      className={className}
       size="sm"
       icon={<SearchIcon />}
       placeholder={placeholder}

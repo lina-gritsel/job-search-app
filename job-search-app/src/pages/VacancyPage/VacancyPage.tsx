@@ -15,12 +15,13 @@ import styles from './VacancyPage.module.scss'
 const VacancyPage: FC = () => {
   const { id: vacancyId } = useParams<{ id: string }>()
 
-  const { data, loading } = useVacancyPage(vacancyId as string)
+  const { data, loading } = useVacancyPage(vacancyId)
   const vacancy = parseVacancy(data)
-  const vacancyInfo = parse(data.vacancyRichText)
+  const html = data?.vacancyRichText
+  const vacancyInfo = parse(html || '')
 
   return (
-    <>
+    <div className={styles.content}>
       {loading && isEmpty(data) && <Loader />}
       {!isEmpty(data) && (
         <div className={styles.container}>
@@ -29,12 +30,10 @@ const VacancyPage: FC = () => {
             {...vacancy}
             className={styles.vacancyCard}
           />
-          <div className={styles.info}>
-            {vacancyInfo}
-            </div>
+          <div className={styles.info}>{vacancyInfo}</div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

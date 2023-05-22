@@ -21,5 +21,5 @@ export const fetchFavorites = () => {
     })()
   }, [])
 
-  return { favorites: data }
+  return { favorites: data, storageVacansies: storageVacanciesIds }
 }
