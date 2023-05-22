@@ -25,7 +25,11 @@ const Filters: FC<FiltersProps> = ({ industries, setQueryData }) => {
     setQueryData({ industry: key, paymentFrom, paymentTo })
   }
 
-  const onClear = () => {}
+  const onClear = () => {
+    setIndustry('')
+    setPaymentFrom('')
+    setPaymentTo('')
+  }
 
   return (
     <div className={styles.container}>
