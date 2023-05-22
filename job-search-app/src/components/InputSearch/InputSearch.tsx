@@ -13,7 +13,7 @@ const InputSearch: FC<{
   className?: string
 }> = ({ onChange, placeholder, className }) => {
   const rightSection = (
-    <Button className={styles.btnSearch}>
+    <Button className={styles.btnSearch} data-elem="search-button">
       <p className={styles.searchTitle}> Поиск</p>
       <img className={styles.searchIcon} src={searchIcon} alt="search" />
     </Button>

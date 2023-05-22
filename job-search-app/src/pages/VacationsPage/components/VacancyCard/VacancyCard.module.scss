@@ -75,6 +75,15 @@
   }
 }
 
+.point {
+  color: var(--grey600-color);
+  font-weight: 400;
+  font-size: 40px;
+  position: relative;
+  top: -32px;
+  height: 21px;
+}
+
 @media (max-width: 786px) {
   .container {
     padding: 16px;
@@ -94,6 +103,7 @@
   .wrapper {
     flex-direction: column;
     align-items: flex-start;
+    gap: 5px;
   }
 
   .timeLine {
@@ -102,6 +112,10 @@
 
   .city {
     font-size: 14px;
+  }
+
+  .point {
+    display: none;
   }
 }
 

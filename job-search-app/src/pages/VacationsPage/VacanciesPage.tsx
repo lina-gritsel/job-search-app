@@ -35,6 +35,7 @@ const VacanciesPage: FC = () => {
           <InputSearch
             onChange={(e) => setSearchDebounced(e.target.value)}
             placeholder="Введите название вакансии"
+            data-elem="search-input"
           />
           <VacanciesList vacancies={vacancies} loading={loading} />
         </div>

@@ -43,6 +43,7 @@ const Filters: FC<FiltersProps> = ({ industries, setQueryData }) => {
             onChange={setIndustry}
             placeholder="Выберите отрасль"
             data={industries}
+            data-elem="industry-select"
           />
         </div>
         <div className={styles.filter}>
@@ -51,14 +52,18 @@ const Filters: FC<FiltersProps> = ({ industries, setQueryData }) => {
             value={paymentFrom}
             onChange={(event: Event) => setPaymentFrom(event.target.value)}
             placeholder="От"
+            data-elem="salary-from-input"
           />
           <InputNumeric
             value={paymentTo}
             onChange={(event: Event) => setPaymentTo(event.target.value)}
             placeholder="До"
+            data-elem="salary-to-input"
           />
         </div>
-        <Button onClick={onSubmit}>Применить</Button>
+        <Button onClick={onSubmit} data-elem="search-button">
+          Применить
+        </Button>
       </div>
     </div>
   )
