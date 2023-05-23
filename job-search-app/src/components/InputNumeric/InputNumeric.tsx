@@ -19,9 +19,22 @@ const InputNumeric: FC<InputNumericProps> = ({
       onChange={onChange}
       placeholder={placeholder}
       min={0}
+      step={100}
+      stepHoldDelay={500}
+      stepHoldInterval={100}
       styles={{
         controlUp: { border: 0, width: 17, color: '#7b7c88' },
         controlDown: { border: 0, width: 17, color: '#7b7c88' },
+      }}
+      onKeyDown={(event) => {
+        if (
+          event.key === '.' ||
+          event.key === 'e' ||
+          event.key === ',' ||
+          event.key === '-'
+        ) {
+          event.preventDefault()
+        }
       }}
     />
   )
