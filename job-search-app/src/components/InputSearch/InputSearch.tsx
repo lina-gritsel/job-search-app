@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { Button, Input } from '@mantine/core'
 
 import searchIcon from '../../assets/images/search.png'
@@ -9,9 +9,10 @@ import styles from './InputSearch.module.scss'
 
 const InputSearch: FC<{
   placeholder: string
-  onChange: (args: any) => void
+  onChange: (args: React.ChangeEvent<HTMLInputElement>) => void
   className?: string
 }> = ({ onChange, placeholder, className }) => {
+
   const rightSection = (
     <Button className={styles.btnSearch} data-elem="search-button">
       <p className={styles.searchTitle}> Поиск</p>

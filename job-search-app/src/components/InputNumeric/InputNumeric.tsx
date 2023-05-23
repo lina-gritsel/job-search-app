@@ -1,8 +1,6 @@
 import { FC } from 'react'
 import { NumberInput } from '@mantine/core'
 
-import styles from './InputNumeric.module.scss'
-
 interface InputNumericProps {
   placeholder: string
   onChange: (args: any) => void
