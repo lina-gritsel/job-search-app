@@ -1,10 +1,12 @@
-import React, { FC } from 'react'
-import { Input } from '@mantine/core'
+import { FC } from 'react'
+import { NumberInput } from '@mantine/core'
+
+import styles from './InputNumeric.module.scss'
 
 interface InputNumericProps {
   placeholder: string
   onChange: (args: any) => void
-  value: string
+  value: number | ''
 }
 
 const InputNumeric: FC<InputNumericProps> = ({
@@ -12,7 +14,19 @@ const InputNumeric: FC<InputNumericProps> = ({
   onChange,
   placeholder,
 }) => {
-  return <Input value={value} onChange={onChange} placeholder={placeholder} />
+  return (
+    <NumberInput
+      type="number"
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      min={0}
+      styles={{
+        controlUp: { border: 0, width: 17, color: '#7b7c88' },
+        controlDown: { border: 0, width: 17, color: '#7b7c88' },
+      }}
+    />
+  )
 }
 
 export default InputNumeric

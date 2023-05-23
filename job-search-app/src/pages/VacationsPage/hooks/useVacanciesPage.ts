@@ -8,8 +8,8 @@ import {
 import { Industries, Vacancies } from '../../../api'
 
 export interface VacanciesQueryParams {
-  paymentFrom: string
-  paymentTo: string
+  paymentFrom: number | ''
+  paymentTo: number | ''
   industry: string
 }
 

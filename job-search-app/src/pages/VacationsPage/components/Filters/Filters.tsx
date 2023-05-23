@@ -8,7 +8,7 @@ import { Industries } from '../../../../api'
 
 import styles from './Filters.module.scss'
 
-type Event = { target: { value: string } }
+type Event = { target: { value: number | '' } }
 
 interface FiltersProps {
   industries: Industries[]
@@ -17,8 +17,8 @@ interface FiltersProps {
 
 const Filters: FC<FiltersProps> = ({ industries, setQueryData }) => {
   const [industry, setIndustry] = useState<string>('')
-  const [paymentFrom, setPaymentFrom] = useState<string>('')
-  const [paymentTo, setPaymentTo] = useState<string>('')
+  const [paymentFrom, setPaymentFrom] = useState<number | ''>('')
+  const [paymentTo, setPaymentTo] = useState<number | ''>('')
 
   const onSubmit = () => {
     const key = String(industries.find(({ title }) => title === industry).key)
@@ -55,13 +55,13 @@ const Filters: FC<FiltersProps> = ({ industries, setQueryData }) => {
           <p className={styles.subtitle}>оклад</p>
           <InputNumeric
             value={paymentFrom}
-            onChange={(event: Event) => setPaymentFrom(event.target.value)}
+            onChange={(event: Event) => setPaymentFrom(event?.target?.value)}
             placeholder="От"
             data-elem="salary-from-input"
           />
           <InputNumeric
             value={paymentTo}
-            onChange={(event: Event) => setPaymentTo(event.target.value)}
+            onChange={(event: Event) => setPaymentTo(event?.target?.value)}
             placeholder="До"
             data-elem="salary-to-input"
           />
